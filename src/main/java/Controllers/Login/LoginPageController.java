@@ -8,10 +8,11 @@ import javafx.scene.control.TextField;
 import model.dto.LoginDTO;
 import scean.SceanManager;
 import service.LoginController;
+import service.LoginService;
 
 public class LoginPageController {
 
-    LoginController loginController = new LoginController();
+    LoginService service = new LoginController();
 
     @FXML
     private Button btnLogin;
@@ -30,7 +31,7 @@ public class LoginPageController {
         loginDTO.setUserName(txtUserName.getText());
         loginDTO.setPassword(txtPassword.getText());
 
-        if (loginController.CheckUserNameAndPassword(loginDTO)) {
+        if (service.CheckUserNameAndPassword(loginDTO)) {
             SceanManager.switchPage("/view/Home/Home_Page.fxml");
         }else {
             SceanManager.switchPage("/view/Login/Login_error_page.fxml");

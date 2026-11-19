@@ -1,6 +1,6 @@
 package Controllers.Members;
 
-import DB.dbConnection;
+import db.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

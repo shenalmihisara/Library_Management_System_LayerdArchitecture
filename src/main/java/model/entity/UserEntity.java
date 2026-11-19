@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class userEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,12 +27,12 @@ public class userEntity {
         this.password = password;
     }
 
-    public userEntity(String userName, String password) {
+    public UserEntity(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
-    public userEntity() {
+    public UserEntity() {
     }
 
     @Override

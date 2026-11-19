@@ -1,35 +1,23 @@
 package service;
 
-import DB.dbConnection;
 import model.dto.LoginDTO;
+import model.entity.UserEntity;
+import repository.LoginRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+public class LoginController implements LoginService {
+    LoginRepository loginRepository = new LoginRepository();
 
-public class LoginController {
-    Connection connection = dbConnection.getInstance().getConnection();
-
+    @Override
     public boolean CheckUserNameAndPassword(LoginDTO loginDTO) {
-        String SQL = "SELECT * FROM users";
 
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            ResultSet resultSet = preparedStatement.executeQuery();
+        UserEntity userEntity = loginRepository.CheckUserNameAndPassword(loginDTO);
 
-            while (resultSet.next()){
-                String dbUsername = resultSet.getString("username");
-                String dbPassword = resultSet.getString("password");
-
-                if (dbUsername.equals(loginDTO.getUserName()) && dbPassword.equals(loginDTO.getPassword())){
-                    return true;
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (
+                userEntity.getUserName().equals(loginDTO.getUserName()) &&
+                        userEntity.getPassword().equals(loginDTO.getPassword())
+        ){
+            return true;
         }
-
 
         return false;
     }

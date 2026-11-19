@@ -1,6 +1,6 @@
 package Controllers.Books;
 
-import DB.dbConnection;
+import db.dbConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
