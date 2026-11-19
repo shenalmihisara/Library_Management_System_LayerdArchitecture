@@ -1,7 +1,7 @@
-package Controllers.Login;
+package service;
 
 import DB.dbConnection;
-import model.LoginDTO;
+import model.dto.LoginDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

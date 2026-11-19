@@ -8,9 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import model.BookDTO;
-import model.IssueBookDTO;
+import model.dto.IssueBookDTO;
 import scean.SceanManager;
 
 import java.net.URL;

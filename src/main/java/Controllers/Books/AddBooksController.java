@@ -1,7 +1,7 @@
     package Controllers.Books;
 
     import DB.dbConnection;
-    import model.BookDTO;
+    import model.dto.BookDTO;
 
     import java.sql.Connection;
     import java.sql.PreparedStatement;

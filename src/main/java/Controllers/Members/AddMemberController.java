@@ -2,7 +2,7 @@ package Controllers.Members;
 
 import DB.dbConnection;
 import javafx.scene.control.Alert;
-import model.MemberDTO;
+import model.dto.MemberDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,9 +1,7 @@
 package Controllers.Books;
 
-import Controllers.Alert.AlertUtill;
 import DB.dbConnection;
-import javafx.scene.control.Alert;
-import model.IssueBookDTO;
+import model.dto.IssueBookDTO;
 
 import java.sql.*;
 
