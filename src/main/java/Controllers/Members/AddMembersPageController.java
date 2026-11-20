@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import model.dto.MemberDTO;
 import scean.SceanManager;
+import service.AddMemberService;
+import service.impl.AddMemberServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddMembersPageController implements Initializable {
 
-    AddMemberController addMemberController = new AddMemberController();
+    AddMemberService service = new AddMemberServiceImpl(); 
 
     @FXML
     public TextField txtId;
@@ -40,7 +42,7 @@ public class AddMembersPageController implements Initializable {
 
         MemberDTO memberDTO = new MemberDTO();
 
-        memberDTO.setMemberId(txtId.getText());
+//        memberDTO.setMemberId(txtId.getText());
         memberDTO.setFullName(txtName.getText());
         memberDTO.setAddress(txtAddress.getText());
         memberDTO.setEmail(txtEmail.getText());
@@ -48,7 +50,7 @@ public class AddMembersPageController implements Initializable {
 
 
 
-        if (memberDTO.getMemberId() == null || memberDTO.getMemberId().trim().isEmpty() ||
+        if (/*memberDTO.getMemberId() == null || memberDTO.getMemberId().trim().isEmpty() ||*/
                 memberDTO.getFullName() == null || memberDTO.getFullName().trim().isEmpty() ||
                 memberDTO.getAddress() == null || memberDTO.getAddress().trim().isEmpty() ||
                 memberDTO.getEmail() == null || memberDTO.getEmail().trim().isEmpty() ||
@@ -59,7 +61,7 @@ public class AddMembersPageController implements Initializable {
             return;
         }
 
-        boolean MemberAdded = addMemberController.addMembers(memberDTO);
+        boolean MemberAdded = service.addMembers(memberDTO);
 
         if (MemberAdded){
             AlertUtill.showAlert(Alert.AlertType.INFORMATION,
@@ -77,7 +79,7 @@ public class AddMembersPageController implements Initializable {
         txtEmail.clear();
         txtPhoneNumber.clear();
 
-        txtId.setText(addMemberController.genarateMemberId());
+//        txtId.setText(addMemberController.genarateMemberId());
         txtId.setEditable(false);
     }
 
@@ -119,7 +121,7 @@ public class AddMembersPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtId.setText(addMemberController.genarateMemberId());
+//        txtId.setText(addMemberController.genarateMemberId());
         txtId.setEditable(false);
     }
 }

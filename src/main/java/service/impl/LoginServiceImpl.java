@@ -1,10 +1,11 @@
-package service;
+package service.impl;
 
 import model.dto.LoginDTO;
 import model.entity.UserEntity;
 import repository.LoginRepository;
+import service.LoginService;
 
-public class LoginController implements LoginService {
+public class LoginServiceImpl implements LoginService {
     LoginRepository loginRepository = new LoginRepository();
 
     @Override

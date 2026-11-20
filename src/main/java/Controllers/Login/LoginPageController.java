@@ -7,12 +7,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.dto.LoginDTO;
 import scean.SceanManager;
-import service.LoginController;
+import service.impl.LoginServiceImpl;
 import service.LoginService;
 
 public class LoginPageController {
 
-    LoginService service = new LoginController();
+    LoginService service = new LoginServiceImpl();
 
     @FXML
     private Button btnLogin;

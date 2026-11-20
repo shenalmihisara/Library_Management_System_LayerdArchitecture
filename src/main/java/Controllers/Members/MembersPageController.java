@@ -87,24 +87,24 @@ public class MembersPageController implements Initializable {
     }
 
 
-    public void initializeColumns(){
-        colMemberId.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_id", "" )));
-        colMemberName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_name", "")));
-        colMemberEmail.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("email","")));
-        colMemberPhoneNum.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("phone_number","")));
-        colMemberAddress.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("address", "")));
-
-    }
-
-    private void loadMember(){
-        ObservableList<Map<String, String>> MemberFromDb = memberController.getAllMembers();
-        masterMemberList.setAll(MemberFromDb);
-        tblMembers.setItems(masterMemberList);
-    }
-
+//    public void initializeColumns(){
+//        colMemberId.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_id", "" )));
+//        colMemberName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_name", "")));
+//        colMemberEmail.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("email","")));
+//        colMemberPhoneNum.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("phone_number","")));
+//        colMemberAddress.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("address", "")));
+//
+//    }
+//
+//    private void loadMember(){
+//        ObservableList<Map<String, String>> MemberFromDb = memberController.getAllMembers();
+//        masterMemberList.setAll(MemberFromDb);
+//        tblMembers.setItems(masterMemberList);
+//    }
+//
     public void initialize(URL url, ResourceBundle resourceBundle){
-        initializeColumns();
-        loadMember();
+//        initializeColumns();
+//        loadMember();
     }
 
     public void btnAddMemberSidebarOnAction(ActionEvent actionEvent) {

@@ -25,8 +25,8 @@ public class HomePageController implements Initializable {
     @FXML
     public Label lblreturnBookCount;
 
-    @FXML
-    public Label lblMemberCount;
+//    @FXML
+//    public Label lblMemberCount;
 
     @FXML
     public Label lblBookCount;
@@ -97,7 +97,7 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblMemberCount.setText(String.valueOf(homeController.memberCount()));
+//        lblMemberCount.setText(String.valueOf(homeController.memberCount()));
         lblBookCount.setText(String.valueOf(homeController.bookCount()));
         lblIssueBookCount.setText(String.valueOf(homeController.issueBookCount()));
         lblreturnBookCount.setText(String.valueOf(homeController.returnBookCount()));
