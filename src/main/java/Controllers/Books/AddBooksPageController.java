@@ -12,14 +12,17 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.dto.BookDTO;
 import scean.SceanManager;
+import service.AddBookService;
+import service.AddMemberService;
 import service.impl.AddBooksServiceImpl;
+import service.impl.AddMemberServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddBooksPageController implements Initializable {
 
-    AddBooksServiceImpl addBooksController = new AddBooksServiceImpl();
+    AddBookService addBooks = new AddBooksServiceImpl();
 
     @FXML
     public ComboBox comboBoxBookType;
@@ -113,7 +116,7 @@ public class AddBooksPageController implements Initializable {
         bookDTO.setBookTytpe(comboBoxBookType.getValue().toString());
 
         if (
-                bookDTO.getBookId() == null || bookDTO.getBookId().trim().isEmpty() ||
+//                bookDTO.getBookId() == null || bookDTO.getBookId().trim().isEmpty() ||
                 bookDTO.getBookName() == null || bookDTO.getBookName().trim().isEmpty() ||
                 bookDTO.getBookAuthor() == null || bookDTO.getBookAuthor().trim().isEmpty() ||
                 bookDTO.getRate() == null || bookDTO.getRate().trim().isEmpty() ||
@@ -125,7 +128,7 @@ public class AddBooksPageController implements Initializable {
             return;
         }
 
-        boolean bookAdded = addBooksController.addBooks(bookDTO);
+        boolean bookAdded = addBooks.addBooks(bookDTO);
 
         if (bookAdded){
             AlertUtill.showAlert(Alert.AlertType.INFORMATION,
@@ -143,7 +146,7 @@ public class AddBooksPageController implements Initializable {
         txtRate.clear();
         comboBoxBookType.setValue("Book Type");
 
-        txtBookId.setText(addBooksController.genarateBookId());
+//        txtBookId.setText(addBooksController.genarateBookId());
         txtBookId.setEditable(false);
     }
 
@@ -153,7 +156,7 @@ public class AddBooksPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        txtBookId.setText(addBooksController.genarateBookId());
+//        txtBookId.setText(addBooksController.genarateBookId());
         txtBookId.setEditable(false);
 
         ObservableList<String> cmbList = FXCollections.observableArrayList();

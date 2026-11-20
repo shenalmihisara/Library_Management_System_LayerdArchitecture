@@ -1,5 +1,6 @@
 package db;
 
+import model.entity.BookEntity;
 import model.entity.MemberEntity;
 import model.entity.UserEntity;
 import org.hibernate.Session;
@@ -11,7 +12,8 @@ public class HibernateUtill {
     public static Session getSession(){
         Configuration configuration = new Configuration().configure()
                 .addAnnotatedClass(UserEntity.class)
-                .addAnnotatedClass(MemberEntity.class);
+                .addAnnotatedClass(MemberEntity.class)
+                .addAnnotatedClass(BookEntity.class);
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
 
