@@ -6,13 +6,14 @@ import model.entity.BookEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class BookRepository {
 
     Session session = HibernateUtill.getSession();
+    BookEntity bookEntity = new BookEntity();
 
     public boolean addBook(BookDTO bookDTO) {
-
-        BookEntity bookEntity = new BookEntity();
 
         Transaction transaction = session.beginTransaction();
 
@@ -25,5 +26,14 @@ public class BookRepository {
         transaction.commit();
 
         return true;
+    }
+
+    public List<BookEntity> getAllBooks() {
+        String HQL = "FROM BookEntity";
+
+        List<BookEntity> list = session.createQuery(HQL, BookEntity.class).list();
+
+        return list;
+
     }
 }

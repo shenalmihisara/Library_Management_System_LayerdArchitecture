@@ -5,7 +5,6 @@ import db.HibernateUtill;
 import model.dto.LoginDTO;
 import model.entity.UserEntity;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 public class LoginRepository {
 

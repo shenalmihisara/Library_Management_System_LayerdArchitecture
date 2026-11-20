@@ -1,47 +1,46 @@
 package Controllers.Books;
 
-import Controllers.Members.MemberController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.entity.BookEntity;
 import scean.SceanManager;
+import service.BookService;
+import service.impl.BookServiceImpl;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 public class BooksPageController implements Initializable {
 
-    BookController bookController = new BookController();
+    BookService bookService = new BookServiceImpl();
 
     @FXML
-    public TableView<Map<String, String>>tableBooks;
+    public TableView<BookEntity>tableBooks;
 
     @FXML
-    public TableColumn<Map<String, String>, String>colBookId;
+    public TableColumn<BookEntity, Long>colBookId;
 
     @FXML
-    public TableColumn<Map<String, String>, String>colBookName;
+    public TableColumn<BookEntity, String>colBookName;
 
     @FXML
-    public TableColumn<Map<String, String>, String>colBookAuthor;
+    public TableColumn<BookEntity, String>colBookAuthor;
 
     @FXML
-    public TableColumn<Map<String, String>, String>colRate;
+    public TableColumn<BookEntity, String>colRate;
 
     @FXML
-    public TableColumn<Map<String, String>, String>colBookCategory;
+    public TableColumn<BookEntity, String>colBookCategory;
 
     @FXML
     private Button btnBooks;
@@ -54,8 +53,6 @@ public class BooksPageController implements Initializable {
 
     @FXML
     private Button btnMember;
-
-    private ObservableList<Map<String, String>> masterBookList = FXCollections.observableArrayList();
 
     @FXML
     void btnBooksOnAction(ActionEvent event) {
@@ -101,21 +98,21 @@ public class BooksPageController implements Initializable {
         SceanManager.switchPage("/view/Books/Delete_Books_Page.fxml");
     }
 
-    public void initiableColumns(){
-        colBookId.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("book_id","")));
-        colBookName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("book_name", "")));
-        colBookAuthor.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("book_author", "")));
-        colRate.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("rate","")));
-        colBookCategory.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("book_type", "")));
-        tableBooks.getItems().setAll(bookController.getAllBooks());
+    public void loadBook(){
+        colBookId.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+        colBookName.setCellValueFactory(new PropertyValueFactory<>("bookName"));
+        colBookAuthor.setCellValueFactory(new PropertyValueFactory<>("bookAuthor"));
+        colRate.setCellValueFactory(new PropertyValueFactory<>("rate"));
+        colBookCategory.setCellValueFactory(new PropertyValueFactory<>("bookType"));
 
+        tableBooks.setItems(FXCollections.observableList(bookService.getAllBooks()));
 
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initiableColumns();
+        loadBook();
     }
 
     public void btnDeleteMemberOnAction(ActionEvent actionEvent) {
