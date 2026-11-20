@@ -12,13 +12,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.dto.BookDTO;
 import scean.SceanManager;
+import service.impl.AddBooksServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddBooksPageController implements Initializable {
 
-    AddBooksController addBooksController = new AddBooksController();
+    AddBooksServiceImpl addBooksController = new AddBooksServiceImpl();
 
     @FXML
     public ComboBox comboBoxBookType;

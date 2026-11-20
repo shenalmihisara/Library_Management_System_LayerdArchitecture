@@ -1,4 +1,4 @@
-    package Controllers.Books;
+    package service.impl;
 
     import db.dbConnection;
     import model.dto.BookDTO;
@@ -8,7 +8,7 @@
     import java.sql.ResultSet;
     import java.sql.SQLException;
 
-    public class AddBooksController {
+    public class AddBooksServiceImpl {
         Connection connection = dbConnection.getInstance().getConnection();
 
         public String genarateBookId(){
