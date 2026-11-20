@@ -1,4 +1,4 @@
-package Controllers.Books;
+package service.impl;
 
 import db.dbConnection;
 
@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeleteBooksController {
+public class DeleteBooksServiceImpl {
 
     Connection connection = dbConnection.getInstance().getConnection();
 

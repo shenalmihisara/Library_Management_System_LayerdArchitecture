@@ -7,10 +7,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import scean.SceanManager;
+import service.impl.DeleteBooksServiceImpl;
 
 public class DeleteBooksPageController {
 
-    DeleteBooksController deleteBooksController = new DeleteBooksController();
+    DeleteBooksServiceImpl deleteBooksController = new DeleteBooksServiceImpl();
 
     @FXML
     public TextField txtBookName;
