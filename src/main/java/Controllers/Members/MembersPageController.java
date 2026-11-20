@@ -8,7 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.entity.MemberEntity;
 import scean.SceanManager;
+import service.MemberService;
 import service.impl.MemberServiceImpl;
 
 import java.net.URL;
@@ -17,25 +20,25 @@ import java.util.ResourceBundle;
 
 public class MembersPageController implements Initializable {
 
-    MemberServiceImpl memberController = new MemberServiceImpl();
+    MemberService memberService = new MemberServiceImpl();
 
     @FXML
-    public TableView<Map<String, String>>tblMembers;
+    public TableView<MemberEntity>tblMembers;
 
     @FXML
-    public TableColumn<Map<String, String>, String> colMemberAddress;
+    public TableColumn<MemberEntity, String> colMemberAddress;
 
     @FXML
-    private TableColumn<Map<String,String>, String>colMemberId;
+    private TableColumn<MemberEntity, String>colMemberId;
 
     @FXML
-    private TableColumn<Map<String, String>, String>colMemberName;
+    private TableColumn<MemberEntity, String>colMemberName;
 
     @FXML
-    private TableColumn<Map<String, String>, String>colMemberEmail;
+    private TableColumn<MemberEntity, String>colMemberEmail;
 
     @FXML
-    private TableColumn<Map<String, String>, String>colMemberPhoneNum;
+    private TableColumn<MemberEntity, String>colMemberPhoneNum;
 
     @FXML
     private Button btnBooks;
@@ -48,8 +51,6 @@ public class MembersPageController implements Initializable {
 
     @FXML
     private Button btnMember;
-
-    private ObservableList<Map<String, String>> masterMemberList = FXCollections.observableArrayList();
 
     @FXML
     void btnBooksOnAction(ActionEvent event) {
@@ -78,25 +79,18 @@ public class MembersPageController implements Initializable {
         SceanManager.switchPage("/view/Members/Add_Members_Page.fxml");
     }
 
+    public void loadMember(){
+        colMemberId.setCellValueFactory(new PropertyValueFactory<>("memberId"));
+        colMemberName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colMemberEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colMemberPhoneNum.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        colMemberAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
 
-//    public void initializeColumns(){
-//        colMemberId.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_id", "" )));
-//        colMemberName.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("member_name", "")));
-//        colMemberEmail.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("email","")));
-//        colMemberPhoneNum.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("phone_number","")));
-//        colMemberAddress.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getOrDefault("address", "")));
-//
-//    }
-//
-//    private void loadMember(){
-//        ObservableList<Map<String, String>> MemberFromDb = memberController.getAllMembers();
-//        masterMemberList.setAll(MemberFromDb);
-//        tblMembers.setItems(masterMemberList);
-//    }
-//
+        tblMembers.setItems(FXCollections.observableList(memberService.getAllMembers()));
+    }
+
     public void initialize(URL url, ResourceBundle resourceBundle){
-//        initializeColumns();
-//        loadMember();
+        loadMember();
     }
 
     public void btnAddMemberSidebarOnAction(ActionEvent actionEvent) {

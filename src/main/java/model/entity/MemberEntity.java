@@ -8,7 +8,7 @@ public class MemberEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mamber_id")
+    @Column(name = "member_id")
     private String memberId;
 
     @Column(name = "name")
