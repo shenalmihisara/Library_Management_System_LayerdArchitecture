@@ -1,8 +1,9 @@
-package Controllers.Members;
+package service.impl;
 
 import db.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import service.MemberService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MemberController {
+public class MemberServiceImpl implements MemberService {
     Connection connection = dbConnection.getInstance().getConnection();
 
     public ObservableList<Map<String, String>> getAllMembers(){

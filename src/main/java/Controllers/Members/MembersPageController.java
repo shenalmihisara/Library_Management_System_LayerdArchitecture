@@ -1,31 +1,23 @@
 package Controllers.Members;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.MapValueFactory;
-import javafx.stage.Stage;
 import scean.SceanManager;
+import service.impl.MemberServiceImpl;
 
-import java.io.IOException;
-import java.lang.reflect.Member;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MembersPageController implements Initializable {
 
-    MemberController memberController = new MemberController();
+    MemberServiceImpl memberController = new MemberServiceImpl();
 
     @FXML
     public TableView<Map<String, String>>tblMembers;
