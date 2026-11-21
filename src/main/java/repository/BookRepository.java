@@ -36,4 +36,19 @@ public class BookRepository {
         return list;
 
     }
+
+    public boolean deleteBook(String bookName, Long bookId) {
+        Transaction transaction = session.beginTransaction();
+
+        BookEntity bookEntity = session.find(BookEntity.class, bookId);
+
+        if (bookEntity != null && bookId.equals(bookEntity.getBookId()) && bookName.equals(bookEntity.getBookName()) ){
+            session.remove(bookEntity);
+            transaction.commit();
+            return true;
+        }
+
+        transaction.rollback();
+        return false;
+    }
 }

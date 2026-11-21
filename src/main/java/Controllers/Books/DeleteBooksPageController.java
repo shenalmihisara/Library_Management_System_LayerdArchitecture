@@ -7,11 +7,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import scean.SceanManager;
+import service.DeleteBookService;
 import service.impl.DeleteBooksServiceImpl;
 
 public class DeleteBooksPageController {
 
-    DeleteBooksServiceImpl deleteBooksController = new DeleteBooksServiceImpl();
+    DeleteBookService deleteBookService = new DeleteBooksServiceImpl();
 
     @FXML
     public TextField txtBookName;
@@ -99,8 +100,7 @@ public class DeleteBooksPageController {
 
     @FXML
     void btnDeleteBooksDataOnAction(ActionEvent event) {
-        if (deleteBooksController.checkBookNameAndBookId(
-                txtBookName.getText(), txtBookId.getText(), txtReEnterBookId.getText())){
+        if (deleteBookService.deleteBook(txtBookName.getText(), Long.valueOf(txtBookId.getText()))){
             AlertUtill.showAlert(Alert.AlertType.INFORMATION,
                     "Sucess",
                     "Member Deleted Sucessfully");
