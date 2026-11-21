@@ -1,11 +1,11 @@
-package Controllers.Members;
+package service.impl;
 
 import db.dbConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeleteMemberController {
+public class DeleteMemberServiceImpl {
     Connection connection = dbConnection.getInstance().getConnection();
 
 

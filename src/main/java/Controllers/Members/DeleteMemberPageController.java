@@ -7,9 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import scean.SceanManager;
+import service.impl.DeleteMemberServiceImpl;
 
 public class DeleteMemberPageController {
-    DeleteMemberController deleteMemberController = new DeleteMemberController();
+    DeleteMemberServiceImpl deleteMemberController = new DeleteMemberServiceImpl();
     
     @FXML
     public TextField txtMemberName;
