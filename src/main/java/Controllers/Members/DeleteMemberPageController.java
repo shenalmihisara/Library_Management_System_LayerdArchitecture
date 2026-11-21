@@ -7,10 +7,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import scean.SceanManager;
+import service.DeleteMemberService;
 import service.impl.DeleteMemberServiceImpl;
 
 public class DeleteMemberPageController {
-    DeleteMemberServiceImpl deleteMemberController = new DeleteMemberServiceImpl();
+    DeleteMemberService deleteMember = new DeleteMemberServiceImpl();
     
     @FXML
     public TextField txtMemberName;
@@ -95,8 +96,8 @@ public class DeleteMemberPageController {
 
     @FXML
     void btnDeleteMemberDataOnAction(ActionEvent event) {
-        if (deleteMemberController.CheckMemberNameAndMemberidAndReEntterMemberId(
-                txtMemberName.getText(), txtMemberId.getText(),txtReEnterMemberId.getText())){
+        if (deleteMember.deleteMember(
+                txtMemberName.getText(), Long.valueOf(txtMemberId.getText()))){
             AlertUtill.showAlert(Alert.AlertType.INFORMATION,
                     "Sucess",
                     "Member Deleted Sucessfully"
