@@ -40,10 +40,10 @@ public class BookRepository {
     public boolean deleteBook(String bookName, Long bookId) {
         Transaction transaction = session.beginTransaction();
 
-        BookEntity bookEntity = session.find(BookEntity.class, bookId);
+        BookEntity book = session.find(BookEntity.class, bookId);
 
-        if (bookEntity != null && bookId.equals(bookEntity.getBookId()) && bookName.equals(bookEntity.getBookName()) ){
-            session.remove(bookEntity);
+        if (book != null && bookId.equals(book.getBookId()) && bookName.equals(book.getBookName()) ){
+            session.remove(book);
             transaction.commit();
             return true;
         }

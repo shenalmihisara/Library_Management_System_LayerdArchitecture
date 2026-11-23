@@ -43,13 +43,12 @@ public class MemberRepository {
     public boolean deleteMember(String memberName, Long memberId) {
 
         Transaction transaction = session.beginTransaction();
-        MemberEntity memberEntity = session.find(MemberEntity.class, memberId);
+        MemberEntity member = session.find(MemberEntity.class, memberId);
 
-        if (memberEntity != null && memberName.equals(memberEntity.getName()) && memberId.equals(memberEntity.getMemberId())){
-            session.remove(memberEntity);
+        if (member != null && memberName.equals(member.getName()) && memberId.equals(member.getMemberId())) {
+            session.remove(member);
             transaction.commit();
             return true;
-
         }
 
         transaction.rollback();

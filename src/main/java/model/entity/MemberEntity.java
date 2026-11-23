@@ -9,7 +9,7 @@ public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
-    private String memberId;
+    private Long memberId;
 
     @Column(name = "name")
     private String name;
@@ -23,11 +23,11 @@ public class MemberEntity {
     @Column(name = "address")
     private String address;
 
-    public String getMemberId() {
+    public Long getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(String memberId) {
+    public void setMemberId(long memberId) {
         this.memberId = memberId;
     }
 
@@ -63,7 +63,7 @@ public class MemberEntity {
         this.address = address;
     }
 
-    public MemberEntity(String memberId, String name, String email, String phoneNumber, String address) {
+    public MemberEntity(Long memberId, String name, String email, String phoneNumber, String address) {
         this.memberId = memberId;
         this.name = name;
         this.email = email;
