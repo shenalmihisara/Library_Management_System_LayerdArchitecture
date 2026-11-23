@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import scean.SceanManager;
+import service.impl.BookHistoryServiceImpl;
 
 import java.net.URL;
 import java.util.Map;
@@ -17,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class BookHistoryPageController implements Initializable {
 
-    BookHistoryController bookHistoryController = new BookHistoryController();
+    BookHistoryServiceImpl bookHistoryController = new BookHistoryServiceImpl();
 
     @FXML
     private Button btnAddBooks;

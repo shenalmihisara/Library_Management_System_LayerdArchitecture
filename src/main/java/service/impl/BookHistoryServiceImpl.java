@@ -1,8 +1,9 @@
-package Controllers.Books;
+package service.impl;
 
 import db.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import service.BookHistoryService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BookHistoryController {
+public class BookHistoryServiceImpl implements BookHistoryService {
 
     Connection connection = dbConnection.getInstance().getConnection();
 
