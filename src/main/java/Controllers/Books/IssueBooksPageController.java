@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class IssueBooksPageController implements Initializable {
 
-    IssueBooksServiceImpl issueBooksController = new IssueBooksServiceImpl();
+    IssueBooksServiceImpl issueBooksService = new IssueBooksServiceImpl();
 
     @FXML
     private Button btnAddBooks;
@@ -67,8 +67,8 @@ public class IssueBooksPageController implements Initializable {
     @FXML
     private TextField txtMemberName;
 
-    @FXML
-    public TextField txtIssueBookId;
+//    @FXML
+//    public TextField txtIssueBookId;
 
     @FXML
     void btnAddBooksOnAction(ActionEvent event) {
@@ -120,13 +120,12 @@ public class IssueBooksPageController implements Initializable {
 
         IssueBookDTO issueBookDTO = new IssueBookDTO();
 
-        issueBookDTO.setIssuBookId(issueBooksController.genarateIssueBookId());
         issueBookDTO.setMemberId(txtMemberId.getText());
         issueBookDTO.setBookId(txtBookId.getText());
         issueBookDTO.setIssueDate(dateIssue.getValue());
         issueBookDTO.setDueDate(dateDue.getValue());
 
-        boolean IsAdded = issueBooksController.issueBooks(issueBookDTO);
+        boolean IsAdded = issueBooksService.issueBooks(issueBookDTO);
 
         if (IsAdded){
             AlertUtill.showAlert(Alert.AlertType.INFORMATION,
@@ -148,10 +147,10 @@ public class IssueBooksPageController implements Initializable {
 
 
     public void btnGetMemberIdOnAction(ActionEvent actionEvent) {
-        String memberId = issueBooksController.getMemberIdFromDb(txtMemberName.getText());
+        Long memberIdFromDb = issueBooksService.getMemberIdFromDb(txtMemberName.getText());
 
-        if (memberId != null){
-            txtMemberId.setText(memberId);
+        if (memberIdFromDb != null){
+            txtMemberId.setText(String.valueOf(memberIdFromDb));
         }else {
             txtMemberId.clear();
             AlertUtill.showAlert(Alert.AlertType.ERROR,"Error","cannot find member Id");
@@ -159,10 +158,10 @@ public class IssueBooksPageController implements Initializable {
     }
 
     public void btnGetBookIdOnAction(ActionEvent actionEvent) {
-        String bookId = issueBooksController.getBookIdFromDb(txtBookName.getText());
+        Long bookIdFromDb = issueBooksService.getBookIdFromDb(txtBookName.getText());
 
-        if (bookId != null){
-            txtBookId.setText(bookId);
+        if (bookIdFromDb != null){
+            txtBookId.setText(String.valueOf(bookIdFromDb));
         }else {
             txtBookId.clear();
             AlertUtill.showAlert(Alert.AlertType.ERROR,"Error", "cannot find book Id");
@@ -173,6 +172,7 @@ public class IssueBooksPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtMemberId.setEditable(false);
 
-        txtIssueBookId.setText("Your Issue Book Id Is : " + issueBooksController.genarateIssueBookId());
+//        IssueBookEntity issueBookEntity = new IssueBookEntity();
+//        txtIssueBookId.setText("Your Issue Book Id Is : " + issueBookEntity.getIssuBookId());
     }
 }

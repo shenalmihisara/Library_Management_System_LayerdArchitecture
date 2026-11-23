@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class IssueBookDTO {
 
-    private String issuBookId;
+    private Long issuBookId;
     private String memberName;
     private String memberId;
     private String bookName;
@@ -12,11 +12,11 @@ public class IssueBookDTO {
     private LocalDate issueDate;
     private LocalDate dueDate;
 
-    public String getIssuBookId() {
+    public Long getIssuBookId() {
         return issuBookId;
     }
 
-    public void setIssuBookId(String issuBookId) {
+    public void setIssuBookId(Long issuBookId) {
         this.issuBookId = issuBookId;
     }
 
@@ -68,7 +68,7 @@ public class IssueBookDTO {
         this.dueDate = dueDate;
     }
 
-    public IssueBookDTO(String issuBookId, String memberName, String memberId, String bookName, String bookId, LocalDate issueDate, LocalDate dueDate) {
+    public IssueBookDTO(Long issuBookId, String memberName, String memberId, String bookName, String bookId, LocalDate issueDate, LocalDate dueDate) {
         this.issuBookId = issuBookId;
         this.memberName = memberName;
         this.memberId = memberId;
