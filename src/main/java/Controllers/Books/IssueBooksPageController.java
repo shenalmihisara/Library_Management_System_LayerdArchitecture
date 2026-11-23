@@ -10,13 +10,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import model.dto.IssueBookDTO;
 import scean.SceanManager;
+import service.impl.IssueBooksServiceImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class IssueBooksPageController implements Initializable {
 
-    IssueBooksController issueBooksController = new IssueBooksController();
+    IssueBooksServiceImpl issueBooksController = new IssueBooksServiceImpl();
 
     @FXML
     private Button btnAddBooks;

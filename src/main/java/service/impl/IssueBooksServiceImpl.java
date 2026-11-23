@@ -1,11 +1,12 @@
-package Controllers.Books;
+package service.impl;
 
 import db.dbConnection;
 import model.dto.IssueBookDTO;
+import service.IssueBookService;
 
 import java.sql.*;
 
-public class IssueBooksController {
+public class IssueBooksServiceImpl implements IssueBookService {
 
     Connection connection = dbConnection.getInstance().getConnection();
 
